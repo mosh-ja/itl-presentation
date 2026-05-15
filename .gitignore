@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.slidev/
+.vite/
+implementation-guide.md
+template.pdf
+template.pptx

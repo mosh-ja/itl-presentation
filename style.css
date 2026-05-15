@@ -1,0 +1,114 @@
+/* ── Brand tokens ─────────────────────────────────────────── */
+:root {
+  --tikal-bg:     #111111;
+  --tikal-orange: #f47721;
+  --tikal-white:  #ffffff;
+  --tikal-grey:   #2a2a2a;
+  --tikal-muted:  #aaaaaa;
+}
+
+/* ── Global slide shell ───────────────────────────────────── */
+.slidev-layout {
+  overflow: hidden;
+  background-color: var(--tikal-bg);
+  color: var(--tikal-white);
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+/* ── Headings ─────────────────────────────────────────────── */
+.slidev-layout h1 {
+  color: var(--tikal-orange);
+  font-weight: 700;
+}
+
+.slidev-layout h2 {
+  color: var(--tikal-white);
+  font-weight: 600;
+  border-bottom: 2px solid var(--tikal-orange);
+  padding-bottom: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.slidev-layout h3 {
+  color: var(--tikal-orange);
+  font-weight: 600;
+}
+
+/* ── Tables ───────────────────────────────────────────────── */
+.slidev-layout table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.slidev-layout th {
+  background: var(--tikal-orange);
+  color: var(--tikal-bg);
+  font-weight: 600;
+  padding: 0.4rem 0.6rem;
+  text-align: left;
+}
+
+.slidev-layout td {
+  padding: 0.35rem 0.6rem;
+  border-bottom: 1px solid var(--tikal-grey);
+  color: var(--tikal-white);
+}
+
+.slidev-layout tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* ── Code blocks ──────────────────────────────────────────── */
+.slidev-layout code {
+  background: var(--tikal-grey);
+  color: var(--tikal-orange);
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+/* ── Blockquote ───────────────────────────────────────────── */
+.slidev-layout blockquote {
+  border-left: 4px solid var(--tikal-orange);
+  padding-left: 1rem;
+  color: var(--tikal-muted);
+  margin: 0.5rem 0;
+}
+
+/* ── Mermaid ──────────────────────────────────────────────── */
+.slidev-layout .mermaid {
+  filter: invert(0);
+}
+
+/* ── Cover layout overrides ───────────────────────────────── */
+.slidev-layout.cover {
+  background: var(--tikal-bg);
+}
+
+.slidev-layout.cover h1 {
+  font-size: 2.8rem;
+  color: var(--tikal-white);
+}
+
+/* ── Section layout overrides ────────────────────────────── */
+.slidev-layout.section {
+  background: linear-gradient(135deg, #111111 60%, #1e1208 100%);
+}
+
+.slidev-layout.section h1 {
+  font-size: 3rem;
+  color: var(--tikal-orange);
+}
+
+/* ── Logo watermark (bottom-right on every slide) ─────────── */
+.slidev-layout::after {
+  content: '';
+  position: fixed;
+  bottom: 18px;
+  right: 24px;
+  width: 80px;
+  height: 26px;
+  background: url('/logo-white.png') no-repeat center / contain;
+  opacity: 0.75;
+  pointer-events: none;
+}

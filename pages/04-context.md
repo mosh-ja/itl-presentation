@@ -8,82 +8,47 @@ layout: section
 layout: default
 ---
 
-## System Scope
-
-<div class="grid grid-cols-2 gap-8">
-<div>
-
-### ✅ In Scope
-
-- Real-time event ingestion from RabbitMQ
-- PHI de-identification (structured + free-text)
-- JSON → Parquet conversion for analytics
-- DBT analytical modeling (Athena / Iceberg)
-- DynamoDB table replication into the lake
-- Manual operator triggers for ad-hoc ops
-
-</div>
-<div>
-
-### ❌ Out of Scope
-
-- Upstream RabbitMQ platform (external)
-- Clinical application layer
-- BI / ML tooling (Redash, Tableau)
-- Commercial DynamoDB source tables
-- Query interface for consumers
-
-</div>
-</div>
-
-<br>
-
-> **Three repositories, one platform:** `core-services` (DESA) · `data-infra` (5 pipeline services + DBT) · `terraform-live` (AWS infrastructure)
-
----
-layout: default
----
-
 ## Context Diagram
 
-<Transform :scale="0.72">
+<div style="width:100%; text-align:center; transform:scale(0.85); transform-origin:top center;">
 
 ```mermaid
-graph TD
-    RabbitMQ["RabbitMQ\n(Product Event Bus)"]
-    Operators["Operators\n(Platform Team)"]
-    GitHub["GitHub Actions\n(CI/CD + Manual Ops)"]
-    Comprehend["Amazon Comprehend Medical\n(PHI NLP)"]
-    DynamoDB["DynamoDB\n(Commercial + Processing)"]
-    EventBridge["AWS EventBridge\n(Scheduled Triggers)"]
-    Consumers["BI / ML / Analytics\n(Downstream Consumers)"]
-    ExternalAccounts["Downstream AWS Accounts\n(Governed Access)"]
-    CodeArtifact["AWS CodeArtifact\n(Internal Package Registry)"]
-    Dagster["Dagster\n(Orchestration — shared K8s)"]
+%%{init: {
+  'theme': 'base',
+  'themeVariables': {
+    'background': '#0B0F14',
+    'primaryColor': '#1e2a38',
+    'primaryBorderColor': '#3a5068',
+    'primaryTextColor': '#dce6f0',
+    'lineColor': '#dce6f0',
+    'edgeColor': '#7ab8e0'
+  }
+}}%%
+graph LR
+    BE["Backend Events"]
+    DDB["DynamoDB CDC"]
+    PG["Postgres DB"]
+    CM["Comprehend Medical"]
+    Platform["Data Pipeline"]
+    Tableau["Tableau"]
+    Redash["Redash"]
 
-    Platform["Datalake Pipeline Platform\n(data-infra + core-services + terraform-live)"]
-
-    RabbitMQ -->|"Real-time clinical events (AMQPS)"| Platform
-    DynamoDB -->|"CDC streams + point-in-time exports"| Platform
-    EventBridge -->|"Scheduled triggers (SQS)"| Platform
-    GitHub -->|"Manual ops triggers + CI/CD"| Platform
-    GitHub -->|"API calls (dbt + aws_ops)"| Dagster
-    Dagster -->|"dbt + aws_ops (per-slice agents)"| Platform
-    CodeArtifact -->|"Internal Python packages"| Platform
-    Platform -->|"PHI text for entity detection"| Comprehend
-    Platform -->|"No-PHI Parquet + DBT tables"| Consumers
-    Platform -->|"Governed lake access"| ExternalAccounts
-    Operators -->|"Manual triggers via GitHub Actions"| GitHub
+    BE --> Platform
+    DDB --> Platform
+    PG --> Platform
+    CM <--> Platform
+    Platform --> Tableau
+    Platform --> Redash
 ```
 
-</Transform>
+</div>
 
 ---
 layout: default
 class: text-sm
 ---
 
-## External Dependencies
+## Core Components
 
 | Dependency | Role | Criticality | Fallback |
 |-----------|------|-------------|---------|

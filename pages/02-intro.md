@@ -11,7 +11,7 @@ layout: default
 <ul style="margin:0; padding-left:1.4rem;">
   <li>Understand, not memorize</li>
   <li>Challenge assumptions</li>
-  <li>Learn by experimentation and example</li>
+  <li>Learn through experiments and examples</li>
   <li>Always smiling</li>
 </ul>
 
@@ -33,16 +33,16 @@ layout: default
 
 <div class="mt-2" style="display:flex; flex-direction:column; gap:1.5rem;">
 
-| Existing System |
-|----------------|
-| Different data sources — Backend events, CDC, and direct DB access |
-| Self-serve analytical modeling |
+| Existing System                                                                  |
+|--------------------------------------------------------------------------------- |
+| Different data sources — Backend events, CDC, and direct DB access               |
+| Self-serve analytical modeling                                                   |
 | Data governance — HIPAA and GDPR compliance, PHI isolation and de-identification |
 
-| Dagster |
-|---------|
+| Dagster                                                            |
+|------------------------------------------------------------------- |
 | Expand self-serve capability — teams/domains operate independently |
-| Safe adoption path — minimal disruption and easy rollback |
+| Safe adoption path — minimal disruption and easy rollback          |
 
 </div>
 
@@ -52,23 +52,11 @@ layout: default
 
 ## Stakeholders
 
-<div class="grid grid-cols-2 gap-6 mt-2">
-<div>
-
-| Stakeholder | Role |
-|-------------|------|
-| **Acquirers** | Oversee procurement of the system |
-| **Assessors** | Conformance to standards & regulation |
-| **Communicators** | Explain the system to other stakeholders |
-
-</div>
-<div>
-
-| Stakeholder | Role |
-|-------------|------|
-| **Developers** | Construct and deploy the system |
-| **Maintainers** | Manage evolution once operational |
-| **Production Engineers** | Design, deploy, and manage environments |
-
-</div>
-</div>
+| Stakeholder              | Data Role           | Primary Concerns                                        |
+| ------------------------ | ------------------- | ------------------------------------------------------- |
+| Data Infrastructure Team | Platform            | Infrastructure reliability, operations, and performance |
+| Security & DevOps        | Platform            | Compliance, access control, and auditing                |
+| Core Development Team    | Producer            | Data production and feed quality                        |
+| AI Research Team         | Producer & Consumer | Algorithm outputs and modeling                          |
+| Analyst Team             | Consumer            | Data quality, modeling, and business insights           |
+| Sales & Product Managers | Consumer (Indirect) | Business insights and decision-making support           |

@@ -6,6 +6,15 @@ lineNumbers: false
 drawings:
   persist: false
 layout: cover
+mermaid:
+  theme: base
+  themeVariables:
+    background: '#0B0F14'
+    primaryColor: '#1e2a38'
+    primaryBorderColor: '#3a5068'
+    primaryTextColor: '#dce6f0'
+    lineColor: '#7ab8e0'
+    edgeColor: '#7ab8e0'
 ---
 
 <div style="display:flex; height:100%; align-items:center;">

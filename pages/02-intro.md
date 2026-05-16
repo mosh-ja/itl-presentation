@@ -1,51 +1,74 @@
 ---
-layout: section
----
-
-# Introduction
-
----
-layout: two-cols
+layout: default
 ---
 
 ## About Me
 
-<div style="margin-top:1rem;">
+<div style="display:flex; height:calc(100% - 4rem); align-items:center; gap:4rem; margin-top:1rem;">
 
-- Challenge assumptions
-- Understand, not memorize
-- Learn by experimentation and example
-- Always smiling
+<div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
+
+<ul style="margin:0; padding-left:1.4rem;">
+  <li>Understand, not memorize</li>
+  <li>Challenge assumptions</li>
+  <li>Learn by experimentation and example</li>
+  <li>Always smiling</li>
+</ul>
 
 </div>
 
-<br>
-
-**Moshe Jacobson**
-Data Engineer
-
-::right::
-
-<div class="ml-8 mt-8" style="color:#aaaaaa; font-size:0.9rem;">
-
-*[Photo / personal note placeholder]*
+<div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1rem;">
+  <img src="/photo.jpg" style="width:260px; height:260px; border-radius:50%; object-fit:cover;" />
+  <p style="margin:0; text-align:center;"><strong>Moshe Jacobson</strong><br>
+  <span style="color:#aaaaaa;">Data Engineer</span></p>
+</div>
 
 </div>
 
 ---
 layout: default
-class: text-sm
 ---
 
 ## Requirements at a Glance
 
-| # | Requirement |
-|---|-------------|
-| 1 | Ingest real-time clinical events from RabbitMQ reliably and at scale |
-| 2 | Enforce strict PHI / no-PHI data separation at every pipeline layer |
-| 3 | De-identify structured and free-text PHI before analytical exposure |
-| 4 | Provide SQL-based analytical modeling via DBT on top of the lake |
-| 5 | Replicate DynamoDB tables incrementally into the analytical lake |
-| 6 | Allow independent scaling and deployment of each pipeline stage |
-| 7 | Support multi-region deployment (US + EU) with data residency compliance |
-| 8 | Enable operator-driven manual triggers for ad-hoc data operations |
+<div class="mt-2" style="display:flex; flex-direction:column; gap:1.5rem;">
+
+| Existing System |
+|----------------|
+| Different data sources — Backend events, CDC, and direct DB access |
+| Self-serve analytical modeling |
+| Data governance — HIPAA and GDPR compliance, PHI isolation and de-identification |
+
+| Dagster |
+|---------|
+| Expand self-serve capability — teams/domains operate independently |
+| Safe adoption path — minimal disruption and easy rollback |
+
+</div>
+
+---
+layout: default
+---
+
+## Stakeholders
+
+<div class="grid grid-cols-2 gap-6 mt-2">
+<div>
+
+| Stakeholder | Role |
+|-------------|------|
+| **Acquirers** | Oversee procurement of the system |
+| **Assessors** | Conformance to standards & regulation |
+| **Communicators** | Explain the system to other stakeholders |
+
+</div>
+<div>
+
+| Stakeholder | Role |
+|-------------|------|
+| **Developers** | Construct and deploy the system |
+| **Maintainers** | Manage evolution once operational |
+| **Production Engineers** | Design, deploy, and manage environments |
+
+</div>
+</div>

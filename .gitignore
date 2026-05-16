@@ -2,6 +2,7 @@ node_modules/
 dist/
 .slidev/
 .vite/
-implementation-guide.md
+slidev-guide.md
+Agents.md
 template.pdf
 template.pptx

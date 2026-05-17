@@ -92,6 +92,11 @@
   stroke-width: 2px;
 }
 
+.slidev-layout .mermaid svg {
+  width: 100% !important;
+  height: auto !important;
+}
+
 /* ── Mermaid diagram centering + scale helper ─────────────── */
 .mermaid-center {
   width: 100%;

@@ -6,70 +6,152 @@ layout: section
 
 ---
 layout: default
-class: text-sm
 ---
 
-## Functional Elements
+## Backend Event Ingestion
 
-| Element | Repo | Responsibility |
-|---------|------|---------------|
-| **DESA** | `core-services` | Consume RabbitMQ events; envelope & deliver to raw S3 via Firehose |
-| **Events Transformation** | `data-infra` | Normalize v1/v2 schemas to `GenericEvent`; publish to SNS |
-| **SNS Routing Layer** | Infrastructure | Fan-out transformed events via message attribute filters |
-| **TEDI** | `data-infra` | Hash structured PHI; NLP-mask free-text PHI via Comprehend Medical |
-| **Relational Processor** | `data-infra` | Convert JSON events to Parquet; group by partition dimensions |
-| **DRT** | `data-infra` | Run Data Swamp SQL; data retention churn |
-| **Dagster** | `data-infra` | Schedule & execute dbt builds and aws_ops across all 5 slices |
-| **DDB Replicator** | `data-infra` | Merge DynamoDB CDC + full-load exports into Glue/Iceberg via Athena MERGE |
+```mermaid
+%%{init: {
+  'theme': 'base',
+  'themeVariables': {
+    'background': '#0B0F14',
+    'primaryColor': '#1e2a38',
+    'primaryBorderColor': '#3a5068',
+    'primaryTextColor': '#dce6f0',
+    'lineColor': '#dce6f0',
+    'edgeColor': '#7ab8e0',
+    'edgeLabelBackground': '#1e2a38'
+  }
+}}%%
+graph LR
+    DESA
+    Firehose
+    DET
+    TEDI
+    CM["AWS Comprehend Medical"]
+    PHI_TB["PHI Table"]
+    NOPHI_TB["No-PHI Table"]
+
+    DESA --> Firehose
+    Firehose --> |"s3->sqs"| DET
+    DET --> |"sns->sqs"| TEDI
+    TEDI <--> CM
+    TEDI --> PHI_TB
+    TEDI --> NOPHI_TB
+```
+
+<div style="margin-top: 1rem;">
+
+* DESA - Listen to RabbitMQ.
+* DET - Events Transformation (normalizes different versions).
+* TEDI - Text De-identification.
+
+</div>
 
 ---
 layout: default
 ---
 
-## Pipeline Flow
+## CDC Ingestion
 
-<Transform :scale="0.68">
+**DynamoDB CDC**
 
 ```mermaid
-graph TD
-    RMQ["RabbitMQ\n(External)"]
-    DDB_Ext["DynamoDB\n(External)"]
-    EB["EventBridge\n(data swamp + DDB CDC)"]
-    GHA["GitHub Actions\nOps"]
-    Dagster_F["Dagster\n(dbt + aws_ops)"]
+%%{init: {
+  'theme': 'base',
+  'themeVariables': {
+    'background': '#0B0F14',
+    'primaryColor': '#1e2a38',
+    'primaryBorderColor': '#3a5068',
+    'primaryTextColor': '#dce6f0',
+    'lineColor': '#dce6f0',
+    'edgeColor': '#7ab8e0',
+    'edgeLabelBackground': '#1e2a38'
+  }
+}}%%
+graph LR
+    DDB_IN["DynamoDB Tables"]
+    KS["Kinesis Stream"]
+    Firehose
+    DDB_REP["DDB Replicator"]
+    DDB_OUT["Mirrored Tables"]
 
-    DESA["DESA"]
-    Raw["S3 Raw\n(PHI)"]
-    ET["Events Transformation"]
-    SNS["SNS Processing Hub"]
-    TEDI["TEDI\n(PHI De-identification)"]
-    nSilver["S3 nSilver\n(no-PHI)"]
-    Silver["S3 Silver\n(PHI)"]
-    RP["Relational Processor"]
-    nGold["S3 nGold\n(no-PHI Parquet)"]
-    Gold["S3 Gold\n(PHI Parquet)"]
-    DRT["DRT\n(Data Swamp + Churn)"]
-    DDBR["DDB Replicator"]
-    Athena["Athena / Glue\nAnalytical Layer"]
-
-    RMQ --> DESA --> Raw --> ET --> SNS
-    SNS -->|"PHI path"| Silver
-    SNS -->|"text-DI filter"| TEDI
-    SNS -->|"no-PHI direct"| nSilver
-    TEDI --> nSilver
-    Silver --> RP
-    nSilver --> RP
-    RP --> Gold
-    RP --> nGold
-    nGold --> Athena
-    DRT --> Athena
-    Dagster_F --> Athena
-    DDB_Ext --> DDBR --> Athena
-    EB --> DRT
-    EB --> DDBR
-    GHA --> DRT
-    GHA --> DDBR
-    GHA -->|"API calls"| Dagster_F
+    DDB_IN --> KS --> Firehose --> DDB_REP --> DDB_OUT
 ```
 
-</Transform>
+**Clinium CDC**
+
+```mermaid
+%%{init: {
+  'theme': 'base',
+  'themeVariables': {
+    'background': '#0B0F14',
+    'primaryColor': '#1e2a38',
+    'primaryBorderColor': '#3a5068',
+    'primaryTextColor': '#dce6f0',
+    'lineColor': '#dce6f0',
+    'edgeColor': '#7ab8e0',
+    'edgeLabelBackground': '#1e2a38'
+  }
+}}%%
+graph LR
+    CL_IN["Clinium DB"]
+    DMS["DMS"]
+    CDC_OUT["CDC Events Tables"]
+
+    CL_IN --> DMS --> CDC_OUT
+```
+
+<div style="margin-top: 1rem;">
+
+* Kinesis Stream, Firehose, and DMS are AWS services.
+* Clinium DB — RDS (Postgres), the main operational database.
+
+</div>
+
+---
+layout: default
+---
+
+## Transformation
+
+```mermaid
+%%{init: {
+  'theme': 'base',
+  'themeVariables': {
+    'background': '#0B0F14',
+    'primaryColor': '#1e2a38',
+    'primaryBorderColor': '#3a5068',
+    'primaryTextColor': '#dce6f0',
+    'lineColor': '#dce6f0',
+    'edgeColor': '#7ab8e0',
+    'edgeLabelBackground': '#1e2a38'
+  }
+}}%%
+graph LR
+    TB_IN["Ingestion Tables"]
+    CL["Clinium DB"]
+    CP["Dagster Control Plane"]
+    Agent["Dagster Agent"]
+    dbt
+    TB_OUT["Fact & Dim Tables"]
+    Redash
+    Tableau
+
+    TB_IN --> dbt
+    CL --> |"Athena data source"| dbt
+    CP -->|"launch"| Agent
+    Agent --> dbt
+    dbt --> TB_OUT
+    TB_OUT --> Redash
+    TB_OUT --> Tableau
+```
+
+<div style="margin-top: 2rem;">
+
+* Dagster Control Plane is cross-region and cross-environment.
+* Dagster Agent is per environment.
+* All transformations are done through Athena.
+* Permissions are managed by IAM + Lake Formation.
+
+</div>

@@ -33,11 +33,11 @@ layout: default
 
 <div class="mt-2" style="display:flex; flex-direction:column; gap:1.5rem;">
 
-| Existing System                                                                  |
-|--------------------------------------------------------------------------------- |
-| Different data sources — Backend events, CDC, and direct DB access               |
-| Self-serve analytical modeling                                                   |
-| Data governance — HIPAA and GDPR compliance, PHI isolation and de-identification |
+| Existing System                                                    |
+|------------------------------------------------------------------- |
+| Different data sources — Backend events, CDC, and direct DB access |
+| Self-serve analytical modeling                                     |
+| Data governance — HIPAA, GDPR, PHI and de-identification           |
 
 | Dagster                                                            |
 |------------------------------------------------------------------- |
@@ -52,11 +52,11 @@ layout: default
 
 ## Stakeholders
 
-| Stakeholder              | Data Role           | Primary Concerns                                        |
-| ------------------------ | ------------------- | ------------------------------------------------------- |
-| Data Infrastructure Team | Platform            | Infrastructure reliability, operations, and performance |
-| Security & DevOps        | Platform            | Compliance, access control, and auditing                |
-| Core Development Team    | Producer            | Data production and feed quality                        |
-| AI Research Team         | Producer & Consumer | Algorithm outputs and modeling                          |
-| Analyst Team             | Consumer            | Data quality, modeling, and business insights           |
-| Sales & Product Managers | Consumer (Indirect) | Business insights and decision-making support           |
+| Stakeholder              | Data Role           | Primary Concerns               |
+| ------------------------ | ------------------- | ------------------------------ |
+| Data Infrastructure Team | Platform            | Infrastructure and performance |
+| Security & DevOps        | Platform            | Compliance and access control  |
+| Core Development Team    | Producer            | Data production                |
+| AI Research Team         | Producer & Consumer | Algorithm outputs              |
+| Analyst Team             | Consumer            | Modeling and business insights |
+| Sales & Product Managers | Consumer (Indirect) | decision-making support        |

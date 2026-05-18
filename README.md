@@ -8,36 +8,30 @@ Slidev presentation for the Viz Data Pipeline architecture description, followin
 npm install
 npm run dev      # http://localhost:3030 — live reload
 npm run build    # outputs to dist/
-npm run export   # export to PDF/PPTX
 ```
 
 ## Structure
 
 ```
-slides.md               # Entry point — global config + page imports
+slides.md               # Entry point — cover slide + global config + page imports
 style.css               # Global brand styles (Tikal: #111111 bg, #f47721 orange)
 public/
   logo-white.png        # Tikal logo (white, for dark backgrounds)
   logo.png              # Tikal logo (dark, for light contexts)
 pages/
-  01-cover.md           # Cover + Agenda
-  02-intro.md           # About Me + Requirements at a Glance
-  03-approach.md        # Stakeholders + R&W methodology
-  04-context.md         # Context Viewpoint
-  05-functional.md      # Functional Viewpoint
-  06-information.md     # Information Viewpoint
-  07-concurrency.md     # Concurrency Viewpoint
-  08-development.md     # Development Viewpoint
-  09-deployment.md      # Deployment Viewpoint
-  10-perspectives.md    # Security · Performance · Location · Regulation
-  11-summary.md         # Tech Stack + Thank You
+  01-intro.md           # About Me + Requirements at a Glance + Stakeholders
+  02-context.md         # Context Viewpoint
+  03-functional.md      # Functional Viewpoint
+  04-information.md     # Information Viewpoint
+  05-concurrency.md     # Concurrency Viewpoint
+  06-development.md     # Development Viewpoint
+  07-deployment.md      # Deployment Viewpoint
+  08-perspectives.md    # Perspectives
+  09-wrap-up.md         # Wrap-up
 ```
 
-## Source Material
+## Deployment
 
-| File | Role |
-|------|------|
-| `../AD.md` | Primary architecture documentation |
-| `../.specify/architect/views/platform/` | Per-viewpoint detail files |
-| `template.pdf` / `template.pptx` | Visual template reference (Tikal) |
-| `implementation-guide.md` | Slidev techniques and patterns used in this project |
+Pushes to `master` automatically build and publish to GitHub Pages.
+
+Published at: https://mosh-ja.github.io/itl-presentation/

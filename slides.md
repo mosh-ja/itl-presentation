@@ -78,25 +78,25 @@ layout: default
 </div>
 
 ---
-src: ./pages/02-intro.md
+src: ./pages/01-intro.md
 ---
 ---
-src: ./pages/04-context.md
+src: ./pages/02-context.md
 ---
 ---
-src: ./pages/05-functional.md
+src: ./pages/03-functional.md
 ---
 ---
-src: ./pages/06-information.md
+src: ./pages/04-information.md
 ---
 ---
-src: ./pages/07-concurrency.md
+src: ./pages/05-concurrency.md
 ---
 ---
-src: ./pages/08-development.md
+src: ./pages/06-development.md
 ---
 ---
-src: ./pages/09-deployment.md
+src: ./pages/07-deployment.md
 ---
 ---
 src: ./pages/10-perspectives.md

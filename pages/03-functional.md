@@ -42,9 +42,9 @@ graph LR
 
 <div style="margin-top: 1rem;">
 
-* DESA - Listen to RabbitMQ.
-* DET - Events Transformation (normalizes different versions).
-* TEDI - Text De-identification.
+* DESA - Listen to RabbitMQ
+* DET - Events Transformation (normalizes different versions)
+* TEDI - Text De-identification
 
 </div>
 
@@ -104,8 +104,8 @@ graph LR
 
 <div style="margin-top: 1rem;">
 
-* Kinesis Stream, Firehose, and DMS are AWS services.
-* Clinium DB — RDS (Postgres), the main operational database.
+* Kinesis Stream, Firehose, and DMS are AWS services
+* Clinium DB — RDS (Postgres), the main operational database
 
 </div>
 
@@ -149,9 +149,9 @@ graph LR
 
 <div style="margin-top: 2rem;">
 
-* Dagster Control Plane is cross-region and cross-environment.
-* Dagster Agent is per environment.
-* All transformations are done through Athena.
-* Permissions are managed by IAM + Lake Formation.
+* Dagster Control Plane is cross-region and cross-environment
+* Dagster Agent is per environment
+* All transformations are done through Athena
+* Permissions are managed by IAM + Lake Formation
 
 </div>

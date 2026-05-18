@@ -88,6 +88,6 @@ graph TD
     Agent -.->|"outbound poll"| Daemon
 ```
 
-- Agents run with pipeline services using outbound-only polling.
+- Agents run with pipeline services using outbound-only polling
 
 </Transform>

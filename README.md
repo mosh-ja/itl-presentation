@@ -32,6 +32,6 @@ pages/
 
 ## Deployment
 
-Pushes to `master` automatically build and publish to GitHub Pages.
+Pushes to `main` automatically build and publish to GitHub Pages via `.github/workflows/deploy.yml`.
 
 Published at: https://mosh-ja.github.io/itl-presentation/

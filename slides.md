@@ -99,8 +99,8 @@ src: ./pages/06-development.md
 src: ./pages/07-deployment.md
 ---
 ---
-src: ./pages/10-perspectives.md
+src: ./pages/08-perspectives.md
 ---
 ---
-src: ./pages/11-summary.md
+src: ./pages/09-summary.md
 ---

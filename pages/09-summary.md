@@ -55,14 +55,12 @@ layout: cover
 
 <div style="display:flex; flex-direction:column; height:100%; justify-content:center; align-items:center; text-align:center;">
 
-<img src="/logo-white.png" style="height:56px; margin-bottom:2rem; opacity:0.9;" />
-
 <h1 style="font-size:3rem; font-weight:700; color:#f47721; margin:0 0 1rem;">
   Thank You
 </h1>
 
 <p style="color:#aaaaaa; font-size:1.1rem; margin:0;">
-  Moshe Jacobson · Data Engineer
+  Moshe Jacobson
 </p>
 
 </div>

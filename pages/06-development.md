@@ -11,11 +11,12 @@ class: text-sm
 
 ## Repositories
 
-- **`data-infra`**
-  - Services + dbt + Dagster code location
-  - Each service has its own pyproject.toml and Dockerfile
-  - GitHub Actions are used as an ops tool (`trigger_ddb_replicator`)
+* **`data-infra`**
+  * Services + dbt + Dagster code location
+  * Each service has its own `pyproject.toml` and `Dockerfile`
+  * GitHub Actions are used as ops tools (e.g. `trigger_ddb_replicator`)
 
-- **`terraform-live`**
-  - One folder per env slice
-  - Use internal terraform-modules for reuse
+* **`terraform-live`**
+  * Centralized Infrastructure as Code (IaC)
+  * One folder per env slice
+  * Use internal terraform-modules for reuse

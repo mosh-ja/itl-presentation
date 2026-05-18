@@ -9,7 +9,7 @@ layout: default
 class: text-sm
 ---
 
-## Tech Stack Summary
+## Tech Stack
 
 <div class="grid grid-cols-2 gap-6">
 <div>

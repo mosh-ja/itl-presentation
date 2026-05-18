@@ -71,7 +71,7 @@ layout: default
 <div>
   <p style="font-size:1.4rem; font-weight:600; color:#f47721; margin:0 0 0.4rem;">Wrap-up</p>
   <ul style="margin:0; padding-left:1.4rem;">
-    <li>Tech Stack & Key Decisions</li>
+    <li>Key Decisions & Tech Stack</li>
   </ul>
 </div>
 
@@ -102,5 +102,5 @@ src: ./pages/07-deployment.md
 src: ./pages/08-perspectives.md
 ---
 ---
-src: ./pages/09-summary.md
+src: ./pages/09-wrap-up.md
 ---

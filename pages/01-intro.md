@@ -12,7 +12,7 @@ layout: default
   <li>Understand, not memorize</li>
   <li>Challenge assumptions</li>
   <li>Learn through experiments and examples</li>
-  <li>Always smiling</li>
+  <li>Smile a lot</li>
 </ul>
 
 </div>
@@ -33,16 +33,14 @@ layout: default
 
 <div class="mt-2" style="display:flex; flex-direction:column; gap:1.5rem;">
 
-| Existing System                                                    |
-|------------------------------------------------------------------- |
-| Different data sources — Backend events, CDC, and direct DB access |
-| Self-serve analytical modeling                                     |
-| Data governance — HIPAA, GDPR, PHI and de-identification           |
+* Ingest different data sources
+  * Backend events, operational DBs, and application state stores
 
-| Dagster                                                            |
-|------------------------------------------------------------------- |
-| Expand self-serve capability — teams/domains operate independently |
-| Safe adoption path — minimal disruption and easy rollback          |
+* Self-serve analytical modeling
+  * Independent execution and scheduling by domain or team
+
+* Data governance
+  * HIPAA, GDPR, PHI, and de-identification
 
 </div>
 

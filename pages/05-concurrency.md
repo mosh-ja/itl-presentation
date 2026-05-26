@@ -11,9 +11,13 @@ class: text-sm
 
 ## Services
 
-* All services are async
+* Streaming ingestion, batch processing
 
-* Multiple pods per service
+* Data is partitioned by hour in the lake
+
+* All services are async, multiple pods per service
+
+* dbt (current): runs every 2 hours, reprocessing the last 2 days
 
 * SQS message lifecycle:
     * Receive → process → delete on success

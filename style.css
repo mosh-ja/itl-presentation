@@ -105,6 +105,21 @@
   transform-origin: top center;
 }
 
+/* Natural diagram size — avoids full-width stretch on sparse layouts */
+.mermaid-compact {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.mermaid-compact .mermaid svg {
+  width: 78% !important;
+  max-width: 62rem;
+  height: auto !important;
+  margin: 0 auto;
+  display: block;
+}
+
 /* ── Cover layout overrides ───────────────────────────────── */
 .slidev-layout.cover {
   background: var(--tikal-bg);

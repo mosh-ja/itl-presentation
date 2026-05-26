@@ -10,7 +10,7 @@ layout: default
 
 ## Context Diagram
 
-<div style="width:100%; text-align:center; transform:scale(0.85); transform-origin:top center;">
+<div class="mermaid-center">
 
 ```mermaid
 %%{init: {
@@ -26,8 +26,8 @@ layout: default
 }}%%
 graph LR
     BE["Backend Events"]
-    CL["Clinium DB"]
-    DDB["DynamoDB CDC"]
+    CL["Main Operational DB"]
+    DDB["App State Store"]
     CM["Comprehend Medical"]
     Platform["Data Pipeline"]
     Tableau

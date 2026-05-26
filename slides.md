@@ -87,13 +87,13 @@ src: ./pages/02-context.md
 src: ./pages/03-functional.md
 ---
 ---
-src: ./pages/04-information.md
+src: ./pages/04-development.md
 ---
 ---
 src: ./pages/05-concurrency.md
 ---
 ---
-src: ./pages/06-development.md
+src: ./pages/06-information.md
 ---
 ---
 src: ./pages/07-deployment.md

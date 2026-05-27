@@ -36,9 +36,7 @@ mermaid:
 </div>
 
 <div style="flex:1; display:flex; align-items:center; justify-content:center; height:100%;">
-  <div style="width:80%; aspect-ratio:4/3; border:2px dashed #555; border-radius:8px; display:flex; align-items:center; justify-content:center; color:#666; font-size:1rem;">
-    Cover image
-  </div>
+  <img src="/tikal-employee.png" alt="Tikal employee" style="max-width:60.8%; max-height:64.6%; object-fit:contain;" />
 </div>
 
 </div>
